@@ -1,8 +1,16 @@
-header {
-    color: royalblue;
+body{
+  margin: 0px;
+  overflow:hidden;
 }
 
-.right {
-    color: black;
-    float: right;
+rect{
+  fill:steelblue
+}
+
+text{
+  font-size:1.5em;
+}
+
+svg {
+  margin: 0px 10px;
 }
