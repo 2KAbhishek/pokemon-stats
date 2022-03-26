@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Stats</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/d3@7.3.0/dist/d3.min.js">
+    </script>
 </head>
-<body>
-    <header>
-        John Doe <span class="right">Data Visualization</span><br>
-        #1234567 <span class="right">Assignment</span>
-    </header>
 
+<body>
+    <h2>Pokemon Count By Generation</h2>
+    <svg id="pokeByGen" width="600" height="500"></svg>
+    <h2>Pokemon Weight By Type</h2>
+    <svg id="pokeByWeight" width="1500" height="500"></svg>
+    <br>
+    <span id="lowestHp">Lowest HP</span>
+    <script src="script.js"></script>
 </body>
+
 </html>
