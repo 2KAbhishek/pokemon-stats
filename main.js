@@ -261,6 +261,13 @@ json("./data/pokemon.json").then((data) => {
   }
   genAttackDefenseSpan.text(`${genAtkDef}`);
 
+  const typeLegend = select("#typeLegend");
+  let typeLegendStr = "| ";
+  for (let type in typeEmoji) {
+    typeLegendStr += `${typeEmoji[type]} : ${type} | `;
+  }
+  typeLegend.text(`${typeLegendStr}`);
+
   // Make bar chart of generation counts
   renderGen(Object.entries(generationCounts));
   renderWeight(Object.entries(primaryWeights));
