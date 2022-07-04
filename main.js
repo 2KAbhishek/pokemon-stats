@@ -11,6 +11,27 @@ import {
   mean,
 } from "d3";
 
+const typeEmoji = {
+  "Grass": "🌱",
+  "Fire": "🔥",
+  "Water": "💧",
+  "Bug": "🐛",
+  "Normal": "⚪",
+  "Dark": "🌑",
+  "Poison": "🐍",
+  "Electric": "⚡",
+  "Ground": "⛰️",
+  "Ice": "❄️",
+  "Fairy": "🧚",
+  "Steel": "⚙️",
+  "Fighting": "🥊",
+  "Psychic": "🔮",
+  "Rock": "🪨",
+  "Ghost": "👻",
+  "Dragon": "🐉",
+  "Flying": "🐦"
+}
+
 const renderGen = (data) => {
   const svg = select("#pokeByGen");
 
@@ -155,16 +176,7 @@ json("./data/pokemon.json").then((data) => {
   for (let type in primaryWeights) {
     typeAvgStr += `${type}: ${Math.round(primaryWeights[type])} | `;
   }
-  typeAverages.text(`${typeAvgStr}` + "(In KG)")
-
-  // Write a function filterHP
-  const filterHP = (data, minHP, maxHP) => {
-    return data.filter((pokemon) => {
-      return pokemon.hp >= minHP && pokemon.hp <= maxHP;
-    });
-  };
-  console.log("Filtered HP");
-  console.log(filterHP(data, 100, 200));
+  typeAverages.text(`${typeAvgStr}` + "(In KG)");
 
   // Create a list genAttackDefense , each of which stores a generation
   const genAttackDefense = data.reduce((prev, curr) => {
@@ -191,4 +203,13 @@ json("./data/pokemon.json").then((data) => {
   // Make bar chart of generation counts
   renderGen(Object.entries(generationCounts));
   renderWeight(Object.entries(primaryWeights));
+
+  // Write a function filterHP
+  const filterHP = (data, minHP, maxHP) => {
+    return data.filter((pokemon) => {
+      return pokemon.hp >= minHP && pokemon.hp <= maxHP;
+    });
+  };
+  console.log("Pokemon with HP between 100 and 200:");
+  console.log(filterHP(data, 100, 200));
 });
