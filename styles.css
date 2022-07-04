@@ -1,16 +1,21 @@
-body{
+body {
   margin: 0px;
-  overflow:hidden;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-rect{
-  fill:steelblue
+rect {
+  fill: #1688f0;
 }
 
-text{
-  font-size:1.5em;
+text {
+  font-size: 1.2em;
 }
 
 svg {
   margin: 0px 10px;
+  padding: 12px;
+  border: #0ebbff solid 5px;
+  border-radius: 8px;
 }
