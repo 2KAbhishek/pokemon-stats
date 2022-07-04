@@ -1,104 +1,90 @@
 <div align = "center">
 
-<h1><a href="https://2kabhishek.github.io/BareMinimum">BareMinimum</a></h1>
+<h1><a href="https://2kabhishek.github.io/pokemon-stats">pokemon-stats</a></h1>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/blob/main/LICENSE">
-<img alt="License" src="https://img.shields.io/github/license/2kabhishek/BareMinimum?style=plastic&color=white&label=License"> </a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/blob/main/LICENSE">
+<img alt="License" src="https://img.shields.io/github/license/2kabhishek/pokemon-stats?style=plastic&color=white&label=License"> </a>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/pulse">
-<img alt="Updated" src="https://img.shields.io/github/last-commit/2kabhishek/BareMinimum?style=plastic&color=e30724&label=Updated"> </a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/pulse">
+<img alt="Updated" src="https://img.shields.io/github/last-commit/2kabhishek/pokemon-stats?style=plastic&color=e30724&label=Updated"> </a>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/stargazers">
-<img alt="Stars" src="https://img.shields.io/github/stars/2kabhishek/BareMinimum?style=plastic&color=00d451&label=Stars"></a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/stargazers">
+<img alt="Stars" src="https://img.shields.io/github/stars/2kabhishek/pokemon-stats?style=plastic&color=00d451&label=Stars"></a>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/network/members">
-<img alt="Forks" src="https://img.shields.io/github/forks/2kabhishek/BareMinimum?style=plastic&color=1688f0&label=Forks"> </a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/network/members">
+<img alt="Forks" src="https://img.shields.io/github/forks/2kabhishek/pokemon-stats?style=plastic&color=1688f0&label=Forks"> </a>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/watchers">
-<img alt="Watchers" src="https://img.shields.io/github/watchers/2kabhishek/BareMinimum?style=plastic&color=ff5500&label=Watchers"> </a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/watchers">
+<img alt="Watchers" src="https://img.shields.io/github/watchers/2kabhishek/pokemon-stats?style=plastic&color=ff5500&label=Watchers"> </a>
 
-<a href="https://github.com/2KAbhishek/BareMinimum/graphs/contributors">
-<img alt="Contributors" src="https://img.shields.io/github/contributors/2kabhishek/BareMinimum?style=plastic&color=f0f&label=Contributors"> </a>
+<a href="https://github.com/2KAbhishek/pokemon-stats/graphs/contributors">
+<img alt="Contributors" src="https://img.shields.io/github/contributors/2kabhishek/pokemon-stats?style=plastic&color=f0f&label=Contributors"> </a>
 
 <a href="https://github.com/2KAbhishek?tab=followers">
 <img alt="Followers" src="https://img.shields.io/github/followers/2kabhishek?color=222&style=plastic&label=Followers"> </a>
 
-<h3>Short sweet headline with 🎇🎉</h3>
+<h3>Gotta stat 'em all 🖲🐭</h3>
 
 <figure>
-  <img src= "images/screenshot.png" alt="BareMinimum Demo" style="width:100%">
+  <img src= "images/screenshot.jpg" alt="pokemon-stats Demo" style="width:100%">
   <br/>
-  <figcaption>BareMinimum screenshot</figcaption>
+  <figcaption>pokemon-stats screenshot</figcaption>
 </figure>
 
 </div>
 
 ## What is this
 
-BareMinimum is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
+Analyses Pokemon stats with D3 and shows them with emojis.
 
 ## Inspiration
 
-BareMinimum was inspired by `<reason/idea>`.
+Always wanted to know these stats about pokemon, finally got around to implementing it.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed the latest version of `<coding_language/dependency/requirement_1>`
+- You have installed the latest version of `any web browser`, `npm`
 
-## Getting BareMinimum
+## Getting pokemon-stats
 
-To install BareMinimum, follow these steps:
+To install pokemon-stats, follow these steps:
 
 ```bash
-git clone https://github.com/2kabhishek/BareMinimum
-cd BareMinimum
-<install_command>
+git clone https://github.com/2kabhishek/pokemon-stats
+cd pokemon-stats
 ```
 
-## Using BareMinimum
+## Using pokemon-stats
+
+Open [pokemon.json](./data/pokemon.json) to look at the raw stats.
+
+To look at the compiled web version open [index.html](./index.html) or [2kabhishek.github.io/pokemon-stats](https://2kabhishek.github.io/pokemon-stats).
+
+To make changes to the script you can edit the [main.js](./main.js) file.
+You need `rollup` to compile the script.
 
 ```bash
-USAGE:
-    command [FLAGS] [OPTIONS]
-
-FLAGS:
-    -h, --help              Prints help information.
-
-OPTIONS:
-    -o, --option <value>    Option description.
-    Options are: a, b. [default: a]
-
-Example:
-
-
+npm install
+npm run build
+# or
+npm run watch
 ```
 
 ## How it was built
 
-BareMinimum was built using `<tech/library>`
+pokemon-stats was built using `VS Code`, `rollup`, `d3`, and classic web tech.
 
 ## Challenges faced
 
-While building BareMinimum the main challenges were `<issue/difficulty>`
+Setting up `d3` with `rollup` was a minor challenge initially.
 
 ## What I learned
 
-While building BareMinimum I `<learned/accomplished>` about `<learning/accomplishment>`
-
-## What's next
-
-Planning to add `<feature/module>`.
-
-### To-Do
-
-- [x] Setup repo
-- [ ] Think real hard
-- [ ] Start typing
-- [ ] Change me
-- [ ] Update README
-- [ ] Finish it
+- Learned about rollup and it's configs
+- Explored more of d3's API
+- Learned about lots of Pokemon stats
 
 Hit the ⭐ button if you found this useful.
 
@@ -106,6 +92,6 @@ Hit the ⭐ button if you found this useful.
 
 <div align="center">
 
-<a href="https://github.com/2KAbhishek/BareMinimum">Source</a> | <a href="https://2kabhishek.github.io/BareMinimum">Website</a>
+<a href="https://github.com/2KAbhishek/pokemon-stats">Source</a> | <a href="https://2kabhishek.github.io/pokemon-stats">Website</a>
 
 </div>
