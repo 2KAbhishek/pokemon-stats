@@ -12330,7 +12330,7 @@
     "primary_type": "Poison",
     "hp": 255.0,
     "height_m": 100.0,
-    "weight_kg": null,
+    "weight_kg": 100.0,
     "speed": 130.0,
     "attack": 115.0,
     "defense": 250.0
