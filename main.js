@@ -136,13 +136,26 @@ json("./data/pokemon.json").then((data) => {
     return prev;
   }, {});
 
+  const typeCountsSpan = select("#typeCounts");
+  let typeStr = "| ";
+  for (let type in typeCounts) {
+    typeStr += `${type}: ${typeCounts[type]} | `;
+  }
+  typeCountsSpan.text(`${typeStr}`);
+
   // use primaryWeights to find the average weight of each type
   let primaryWeights = {};
   for (let type in typeWeights) {
     primaryWeights[type] = typeWeights[type] / typeCounts[type];
   }
-  console.log("Type averages");
-  console.log(primaryWeights);
+
+  const typeAverages = select("#typeAverages");
+
+  let typeAvgStr = "| ";
+  for (let type in primaryWeights) {
+    typeAvgStr += `${type}: ${Math.round(primaryWeights[type])} | `;
+  }
+  typeAverages.text(`${typeAvgStr}` + "(In KG)")
 
   // Write a function filterHP
   const filterHP = (data, minHP, maxHP) => {
