@@ -190,8 +190,12 @@ json("./data/pokemon.json").then((data) => {
     prev[curr.generation].defense += curr.defense;
     return prev;
   }, {});
-  console.log("Generation attack defense");
-  console.log(genAttackDefense);
+  const genAttackDefenseSpan = select("#genAttackDefense");
+  let genAtkDef = "| ";
+  for (let gen in genAttackDefense) {
+    genAtkDef += `Gen ${gen}: Attack: ${genAttackDefense[gen].attack}, Defense: ${genAttackDefense[gen].defense} | `;
+  }
+  genAttackDefenseSpan.text(`${genAtkDef}`);
 
   // Find pokemon with lowest hp using d3
   const lowestHP = data.reduce((prev, curr) => {
