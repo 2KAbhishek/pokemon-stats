@@ -109,11 +109,11 @@ const renderWeight = (data) => {
     .enter()
     .append("text")
     .text(function (d) {
-      return d;
+      return typeEmoji[d];
     })
     .attr("class", "text")
     .attr("x", function (d, i) {
-      return i * 60 + 25;
+      return i * 60 + 30;
     })
     .attr("y", function (d, i) {
       return 490;
@@ -160,7 +160,7 @@ json("./data/pokemon.json").then((data) => {
   const typeCountsSpan = select("#typeCounts");
   let typeStr = "| ";
   for (let type in typeCounts) {
-    typeStr += `${type}: ${typeCounts[type]} | `;
+    typeStr += `${typeEmoji[type]}: ${typeCounts[type]} | `;
   }
   typeCountsSpan.text(`${typeStr}`);
 
@@ -174,9 +174,9 @@ json("./data/pokemon.json").then((data) => {
 
   let typeAvgStr = "| ";
   for (let type in primaryWeights) {
-    typeAvgStr += `${type}: ${Math.round(primaryWeights[type])} | `;
+    typeAvgStr += `${typeEmoji[type]}: ${Math.round(primaryWeights[type])} | `;
   }
-  typeAverages.text(`${typeAvgStr}` + "(In KG)");
+  typeAverages.text(`${typeAvgStr}`);
 
   // Create a list genAttackDefense , each of which stores a generation
   const genAttackDefense = data.reduce((prev, curr) => {
