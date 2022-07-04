@@ -11,7 +11,6 @@ import {
   mean,
 } from "d3";
 
-
 const renderGen = (data) => {
   const svg = select("#pokeByGen");
 
@@ -23,22 +22,37 @@ const renderGen = (data) => {
     yValue.push(data[i][0]);
   }
 
-
-svg.selectAll("rect")
+  svg
+    .selectAll("rect")
     .data(xValue)
-    .enter().append("rect")
-    .attr("height", function(d, i) {return (d * 10)})
-    .attr("width","40")
-    .attr("x", function(d, i) {return (i * 60) + 25})
-    .attr("y", function(d, i) {return 400 - (d * 2)});
+    .enter()
+    .append("rect")
+    .attr("height", function (d, i) {
+      return d * 10;
+    })
+    .attr("width", "40")
+    .attr("x", function (d, i) {
+      return i * 60 + 25;
+    })
+    .attr("y", function (d, i) {
+      return 400 - d * 2;
+    });
 
-    svg.selectAll("text")
+  svg
+    .selectAll("text")
     .data(yValue)
-    .enter().append("text")
-    .text(function(d) {return d})
-           .attr("class", "text")
-           .attr("x", function(d, i) {return (i * 60) + 25})
-           .attr("y", function(d, i) {return 490});
+    .enter()
+    .append("text")
+    .text(function (d) {
+      return d;
+    })
+    .attr("class", "text")
+    .attr("x", function (d, i) {
+      return i * 60 + 25;
+    })
+    .attr("y", function (d, i) {
+      return 490;
+    });
 };
 
 const renderWeight = (data) => {
@@ -52,32 +66,40 @@ const renderWeight = (data) => {
     yValue.push(data[i][0]);
   }
 
-svg.selectAll("rect")
+  svg
+    .selectAll("rect")
     .data(xValue)
-    .enter().append("rect")
-    .attr("height", function(d, i) {return (d * 10)})
-    .attr("width","40")
-    .attr("x", function(d, i) {return (i * 80) + 25})
-    .attr("y", function(d, i) {return 400 - (d * 2)});
+    .enter()
+    .append("rect")
+    .attr("height", function (d, i) {
+      return d * 10;
+    })
+    .attr("width", "40")
+    .attr("x", function (d, i) {
+      return i * 80 + 25;
+    })
+    .attr("y", function (d, i) {
+      return 400 - d * 2;
+    });
 
-    svg.selectAll("text")
+  svg
+    .selectAll("text")
     .data(yValue)
-    .enter().append("text")
-    .text(function(d) {return d})
-           .attr("class", "text")
-           .attr("x", function(d, i) {return (i * 80) + 25})
-           .attr("y", function(d, i) {return 490});
+    .enter()
+    .append("text")
+    .text(function (d) {
+      return d;
+    })
+    .attr("class", "text")
+    .attr("x", function (d, i) {
+      return i * 80 + 25;
+    })
+    .attr("y", function (d, i) {
+      return 490;
+    });
 };
 
-
 json("./data/pokemon.json").then((data) => {
-  // Find pokemon with lowest hp using d3
-  const lowestHP = data.reduce((prev, curr) => {
-    return curr.hp < prev.hp ? curr : prev;
-  });
-  let lowestHPSpan = select("#lowestHp");
-  lowestHPSpan.text(`${lowestHP.name} has the lowest hp of ${lowestHP.hp}`);
-
   // Create a new list generationCounts that stores the counts of each generation in the dataset.
   const generationCounts = data.reduce((prev, curr) => {
     if (prev[curr.generation]) {
@@ -88,8 +110,12 @@ json("./data/pokemon.json").then((data) => {
     return prev;
   }, {});
 
-  console.log("Generation count");
-  console.log(generationCounts);
+  const genCounts = select("#genCounts");
+  let genStr = "| ";
+  for (let gen in generationCounts) {
+    genStr += `Gen ${gen}: ${generationCounts[gen]} | `;
+  }
+  genCounts.text(`${genStr}`);
 
   const typeWeights = data.reduce((prev, curr) => {
     if (prev[curr.primary_type]) {
@@ -118,7 +144,7 @@ json("./data/pokemon.json").then((data) => {
   console.log("Type averages");
   console.log(primaryWeights);
 
-  /* s Write a function filterHP  */
+  // Write a function filterHP
   const filterHP = (data, minHP, maxHP) => {
     return data.filter((pokemon) => {
       return pokemon.hp >= minHP && pokemon.hp <= maxHP;
@@ -127,7 +153,7 @@ json("./data/pokemon.json").then((data) => {
   console.log("Filtered HP");
   console.log(filterHP(data, 100, 200));
 
-  /* n Create a list genAttackDefense , each of which stores a generation */
+  // Create a list genAttackDefense , each of which stores a generation
   const genAttackDefense = data.reduce((prev, curr) => {
     if (!prev[curr.generation]) {
       prev[curr.generation] = {
@@ -141,6 +167,13 @@ json("./data/pokemon.json").then((data) => {
   }, {});
   console.log("Generation attack defense");
   console.log(genAttackDefense);
+
+  // Find pokemon with lowest hp using d3
+  const lowestHP = data.reduce((prev, curr) => {
+    return curr.hp < prev.hp ? curr : prev;
+  });
+  let lowestHPSpan = select("#lowestHp");
+  lowestHPSpan.text(`${lowestHP.name} has the lowest hp of ${lowestHP.hp}`);
 
   // Make bar chart of generation counts
   renderGen(Object.entries(generationCounts));
