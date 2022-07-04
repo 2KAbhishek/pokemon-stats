@@ -48,7 +48,7 @@ const renderGen = (data) => {
     })
     .attr("class", "text")
     .attr("x", function (d, i) {
-      return i * 60 + 25;
+      return i * 60 + 40;
     })
     .attr("y", function (d, i) {
       return 490;
@@ -76,7 +76,7 @@ const renderWeight = (data) => {
     })
     .attr("width", "40")
     .attr("x", function (d, i) {
-      return i * 80 + 25;
+      return i * 60 + 25;
     })
     .attr("y", function (d, i) {
       return 400 - d * 2;
@@ -92,7 +92,7 @@ const renderWeight = (data) => {
     })
     .attr("class", "text")
     .attr("x", function (d, i) {
-      return i * 80 + 25;
+      return i * 60 + 25;
     })
     .attr("y", function (d, i) {
       return 490;
