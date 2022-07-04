@@ -1,36 +1,28 @@
 import {
   select,
-  csv,
-  scaleLinear,
-  max,
-  scaleBand,
-  axisLeft,
-  axisBottom,
   json,
-  min,
-  mean,
 } from "d3";
 
 const typeEmoji = {
-  "Grass": "🌱",
-  "Fire": "🔥",
-  "Water": "💧",
-  "Bug": "🐛",
-  "Normal": "⚪",
-  "Dark": "🌑",
-  "Poison": "🐍",
-  "Electric": "⚡",
-  "Ground": "⛰️",
-  "Ice": "❄️",
-  "Fairy": "🧚",
-  "Steel": "⚙️",
-  "Fighting": "🥊",
-  "Psychic": "🔮",
-  "Rock": "🪨",
-  "Ghost": "👻",
-  "Dragon": "🐉",
-  "Flying": "🐦"
-}
+  Grass: "🌱",
+  Fire: "🔥",
+  Water: "💧",
+  Bug: "🐛",
+  Normal: "⚪",
+  Dark: "🌑",
+  Poison: "🐍",
+  Electric: "⚡",
+  Ground: "⛰️",
+  Ice: "❄️",
+  Fairy: "🧚",
+  Steel: "⚙️",
+  Fighting: "🥊",
+  Psychic: "🔮",
+  Rock: "🪨",
+  Ghost: "👻",
+  Dragon: "🐉",
+  Flying: "🐦",
+};
 
 const renderGen = (data) => {
   const svg = select("#pokeByGen");
@@ -178,6 +170,78 @@ json("./data/pokemon.json").then((data) => {
   }
   typeAverages.text(`${typeAvgStr}`);
 
+  // Find pokemons with highest and lowest hp
+  const highestHP = data.reduce((prev, curr) => {
+    return curr.hp > prev.hp ? curr : prev;
+  });
+  let highestHPStr = `${highestHP.name} : ${highestHP.hp}`;
+  const lowestHP = data.reduce((prev, curr) => {
+    return curr.hp < prev.hp ? curr : prev;
+  });
+  let lowestHPStr = `${lowestHP.name} : ${lowestHP.hp}`;
+  const hpSpan = select("#hp");
+  hpSpan.text(`${highestHPStr} | ${lowestHPStr}`);
+
+  // Find pokemons with highest and lowest height
+  const highestHeight = data.reduce((prev, curr) => {
+    return curr.height_m > prev.height_m ? curr : prev;
+  });
+  let highestHeightStr = `${highestHeight.name} : ${highestHeight.height_m}`;
+  const lowestHeight = data.reduce((prev, curr) => {
+    return curr.height_m < prev.height_m ? curr : prev;
+  });
+  let lowestHeightStr = `${lowestHeight.name} : ${lowestHeight.height_m}`;
+  const heightSpan = select("#height");
+  heightSpan.text(`${highestHeightStr} | ${lowestHeightStr}`);
+
+  // Find pokemons with highest and lowest weight
+  const highestWeight = data.reduce((prev, curr) => {
+    return curr.weight_kg > prev.weight_kg ? curr : prev;
+  });
+  let highestWeightStr = `${highestWeight.name} : ${highestWeight.weight_kg}`;
+  const lowestWeight = data.reduce((prev, curr) => {
+    return curr.weight_kg < prev.weight_kg ? curr : prev;
+  });
+  let lowestWeightStr = `${lowestWeight.name} : ${lowestWeight.weight_kg}`;
+  const weightSpan = select("#weight");
+  weightSpan.text(`${highestWeightStr} | ${lowestWeightStr}`);
+
+  // Find pokemons with highest and lowest attack
+  const highestAttack = data.reduce((prev, curr) => {
+    return curr.attack > prev.attack ? curr : prev;
+  });
+  let highestAttackStr = `${highestAttack.name} : ${highestAttack.attack}`;
+  const lowestAttack = data.reduce((prev, curr) => {
+    return curr.attack < prev.attack ? curr : prev;
+  });
+  let lowestAttackStr = `${lowestAttack.name} : ${lowestAttack.attack}`;
+  const attackSpan = select("#attack");
+  attackSpan.text(`${highestAttackStr} | ${lowestAttackStr}`);
+
+  // Find pokemons with highest and lowest defense
+  const highestDefense = data.reduce((prev, curr) => {
+    return curr.defense > prev.defense ? curr : prev;
+  });
+  let highestDefenseStr = `${highestDefense.name} : ${highestDefense.defense}`;
+  const lowestDefense = data.reduce((prev, curr) => {
+    return curr.defense < prev.defense ? curr : prev;
+  });
+  let lowestDefenseStr = `${lowestDefense.name} : ${lowestDefense.defense}`;
+  const defenseSpan = select("#defense");
+  defenseSpan.text(`${highestDefenseStr} | ${lowestDefenseStr}`);
+
+  // Find pokemons with highest and lowest speed
+  const highestSpeed = data.reduce((prev, curr) => {
+    return curr.speed > prev.speed ? curr : prev;
+  });
+  let highestSpeedStr = `${highestSpeed.name} : ${highestSpeed.speed}`;
+  const lowestSpeed = data.reduce((prev, curr) => {
+    return curr.speed < prev.speed ? curr : prev;
+  });
+  let lowestSpeedStr = `${lowestSpeed.name} : ${lowestSpeed.speed}`;
+  const speedSpan = select("#speed");
+  speedSpan.text(`${highestSpeedStr} | ${lowestSpeedStr}`);
+
   // Create a list genAttackDefense , each of which stores a generation
   const genAttackDefense = data.reduce((prev, curr) => {
     if (!prev[curr.generation]) {
@@ -196,13 +260,6 @@ json("./data/pokemon.json").then((data) => {
     genAtkDef += `Gen ${gen}: Attack: ${genAttackDefense[gen].attack}, Defense: ${genAttackDefense[gen].defense} | `;
   }
   genAttackDefenseSpan.text(`${genAtkDef}`);
-
-  // Find pokemon with lowest hp using d3
-  const lowestHP = data.reduce((prev, curr) => {
-    return curr.hp < prev.hp ? curr : prev;
-  });
-  let lowestHPSpan = select("#lowestHp");
-  lowestHPSpan.text(`${lowestHP.name} has the lowest hp of ${lowestHP.hp}`);
 
   // Make bar chart of generation counts
   renderGen(Object.entries(generationCounts));
